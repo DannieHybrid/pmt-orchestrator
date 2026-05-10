@@ -1,14 +1,13 @@
 import { Worker } from "bullmq";
-import { default as IORedis } from "ioredis";
 import { prisma } from "../lib/prisma.js";
 
 console.log("🔥 PAYMENT WORKER STARTED");
 
-const connection = new IORedis({
+const connection = {
   host: "127.0.0.1",
   port: 6379,
   maxRetriesPerRequest: null,
-});
+};
 
 export const paymentWorker = new Worker(
   "payments",
